@@ -1,0 +1,15 @@
+name: Deploy Workflow
+
+on:
+  push:
+      branches:
+          - master
+  
+  workflow_dispatch:
+
+jobs:
+    #this uses the workflow template with the fix to ensure the environment secret is actually loaded. If you open the last Action run logs you will see that MY_SECRET is NOT empty.
+    my-workflow-job-4:
+      uses: ./.github/workflows/new.yaml
+      environment: dev
+      secrets: inherit
